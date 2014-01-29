@@ -9,9 +9,12 @@
 <body>
 <div id="side">
 	It is our sexyblog.
-	<p>Hello, 
-		<%= User.find(session[:user_id]).name %>
-	</p>
+	<% if session[:user_id] %>
+		<p>Hello, 
+			<%= User.find(session[:user_id]).name %>
+		</p>
+		<%= button_to 'Logout', logout_path, method: :delete %>
+	<% end %>
 </div>
 
 <div id="main">
