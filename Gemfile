@@ -43,3 +43,5 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'will_paginate', '~> 3.0'

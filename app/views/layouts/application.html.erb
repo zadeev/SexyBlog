@@ -8,12 +8,14 @@
 </head>
 <body>
 <div id="side">
-	It is our sexyblog.
+	It is our <%= link_to 'sexyblog.', entries_path %> 
 	<% if session[:user_id] %>
 		<p>Hello, 
-			<%= User.find(session[:user_id]).name %>
+			<%= current_user.name %>
 		</p>
 		<%= button_to 'Logout', logout_path, method: :delete %>
+	<% else %>
+		<%= render template: "sessions/new" %>
 	<% end %>
 </div>
 
