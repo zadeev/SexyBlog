@@ -10,6 +10,7 @@ end
   get "sessions/new"
   #get "sessions/create"
   get "sessions/destroy"
+
   resources :entries
 
   resources :users

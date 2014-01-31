@@ -1,10 +1,10 @@
-<%= form_for(@entry) do |f| %>
-  <% if @entry.errors.any? %>
+<%= form_for(empty_entry) do |f| %>
+  <% if empty_entry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
 
       <ul>
-      <% @entry.errors.full_messages.each do |msg| %>
+      <% empty_entry.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
