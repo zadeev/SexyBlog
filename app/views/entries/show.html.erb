@@ -5,11 +5,16 @@
 	at
 	<%= @entry.created_at %>
 	says:
+    
+      <p>
+        <%= @entry.header %>
+      </p>
+
 	<p>
   		<%= @entry.body %>
 	</p>
 </p>
 
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Destroy', @entry, method: :delete, data: { confirm: 'Are you sure?' } if @entry.user_id == session[:user_id] %>
 <%= link_to 'Back', entries_path %>

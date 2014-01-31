@@ -1,37 +1,25 @@
-<h1>Listing entries</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Header</th>
-      <th>Body</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
     <%= render template:  "entries/new" if session[:user_id]  %>
 
     <% @entries.each do |entry| %>
-      <tr>
-        <td><%= entry.header %></td>
-        <td><%= entry.body %></td>
-        <td><%= entry.user.name %></td>
-        <td><%= entry.created_at %></td>
-        <td><%= link_to 'Show', entry %></td>
-        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+    <p>
+      <%= entry.user.name %>
+    at
+      <%= entry.created_at.to_formatted_s(:long)  %>
+    says:
+
+      <p>
+        <%= entry.header %>
+      </p>
+
+      <p>
+        <%= entry.body %>
+      </p>
+    </p>
+
+    <%= link_to 'Show', entry %>
+
+
+    <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } if entry.user_id == session[:user_id] %>
+
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Entry', new_entry_path %>
-
-<%= will_paginate @entries %>
