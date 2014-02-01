@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125161904) do
+ActiveRecord::Schema.define(version: 20140201093911) do
 
   create_table "entries", force: true do |t|
     t.string   "header"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140125161904) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",           default: false
   end
 
 end
