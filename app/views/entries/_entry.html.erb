@@ -1,0 +1,19 @@
+    <p>
+      <%= entry.user.name %>
+    at
+      <%= entry.created_at.to_formatted_s(:long)  %>
+    says:
+
+      <p>
+        <%= entry.header %>
+      </p>
+
+      <p>
+        <%= raw entry.body %>
+      </p>
+    </p>
+
+    <%= link_to 'Show', entry %>
+
+
+    <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } if entry.user_id == session[:user_id] %>

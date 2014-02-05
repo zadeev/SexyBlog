@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  # before_filter :authorize, only: [:create, :new, :update, :edit, :destroy]
 
   # GET /entries
   # GET /entries.json
