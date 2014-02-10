@@ -9,6 +9,7 @@
 <body>
 <div id="side">
 	It is our <%= link_to 'sexyblog.', "/" %> 
+
 	<% if session[:user_id] %>
 		<p>Hello, 
 			<%= current_user.name %>
@@ -17,6 +18,8 @@
 	<% else %>
 		<%= render template: "sessions/new" %>
 	<% end %>
+
+	<%= link_to 'All users', users_path if current_user.try(:admin) %> 
 </div>
 
 <div id="main">

@@ -16,4 +16,7 @@
     <%= link_to 'Show', entry %>
 
 
-    <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } if entry.user_id == session[:user_id] %>
+    <% if entry.user_id == session[:user_id] or current_user.try(:admin)  %>
+    <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }  %>
+    <% end  %>
+
