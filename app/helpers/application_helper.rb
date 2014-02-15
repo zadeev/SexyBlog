@@ -11,4 +11,6 @@ module ApplicationHelper
 		Entry.new
 	end
 
+
+
 end

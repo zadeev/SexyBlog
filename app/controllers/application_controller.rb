@@ -2,8 +2,10 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-def is_admin
-    unless current_user.admin
+
+  
+	def is_admin
+    unless User.find(session[:user_id]).admin
       redirect_to root_url, notice: "Вы должны быть администратором"  # halts request cycle
     end
   end

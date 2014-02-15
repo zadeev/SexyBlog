@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :make_admin]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :make_admin, :unmake_admin]
   before_action :index
+  before_action :is_admin, only: [:edit, :update, :destroy, :make_admin, :unmake_admin]
 
   # GET /users
   # GET /users.json
@@ -68,6 +69,14 @@ class UsersController < ApplicationController
   def make_admin
 
     @user.make_admin
+   
+    @user.save
+    redirect_to users_url
+  end
+
+  def unmake_admin
+
+    @user.unmake_admin
    
     @user.save
     redirect_to users_url

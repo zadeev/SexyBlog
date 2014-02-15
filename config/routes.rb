@@ -18,6 +18,7 @@ end
   resources :users do
     member do
       post "make_admin"
+      post "unmake_admin"
     end
     
     collection do

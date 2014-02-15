@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
   	self.save!
   end
 
+  def unmake_admin
+  	self.admin = false
+  	self.save!
+  end
+
 end
