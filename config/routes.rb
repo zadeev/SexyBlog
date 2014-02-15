@@ -13,12 +13,17 @@ end
   #get "sessions/create"
   get "sessions/destroy"
 
-  resources :entries
+  resources :entries do
+        member do
+      get "plus_rating"
+      get "minus_rating"
+end
+    end
 
   resources :users do
     member do
-      post "make_admin"
-      post "unmake_admin"
+      get "make_admin"
+      get "unmake_admin"
     end
     
     collection do

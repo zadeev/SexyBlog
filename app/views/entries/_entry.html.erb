@@ -5,7 +5,8 @@
     says:
 
       <p>
-        <%= entry.header %>
+        <%= link_to entry.header, entry %>
+        
       </p>
 
       <p>
@@ -13,10 +14,15 @@
       </p>
     </p>
 
-    <%= link_to 'Show', entry %>
+    
 
 
     <% if entry.user_id == session[:user_id] or current_user.try(:admin)  %>
     <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }  %>
     <% end  %>
+
+
+    <%=  link_to "-1", minus_rating_entry_path(entry), method: :get %>
+    <%= entry.rating %>
+    <%= link_to "+1", plus_rating_entry_path(entry), method: :get %>
 

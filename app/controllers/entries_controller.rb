@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_entry, only: [:show, :edit, :update, :destroy, :plus_rating, :minus_rating]
   # before_filter :authorize, only: [:create, :new, :update, :edit, :destroy]
 
   # GET /entries
@@ -60,6 +60,20 @@ class EntriesController < ApplicationController
       format.html { redirect_to entries_url }
       format.json { head :no_content }
     end
+  end
+
+  def plus_rating
+        @entry.plus_rating
+   
+    @entry.save
+    redirect_to :back
+  end
+
+  def minus_rating
+        @entry.minus_rating
+   
+    @entry.save
+    redirect_to :back
   end
 
   private
