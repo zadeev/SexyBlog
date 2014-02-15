@@ -7,13 +7,31 @@ post 'login' => :create
 delete 'logout' => :destroy
 end  
 
+
+
   get "sessions/new"
   #get "sessions/create"
   get "sessions/destroy"
 
   resources :entries
 
-  resources :users
+  resources :users do
+    member do
+      post "make_admin"
+    end
+    
+    collection do
+      get "search"
+      post "search"
+    end
+  end
+
+
+
+  # get "make_admin/:id", to: "users#make_admin"
+  # post "make_admin/:id", to: "user#make_admin"
+  # patch "make_admin/:id", to: "users#make_admin", as: "make_admin"
+  # put "make_admin", to: "user#make_admin"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

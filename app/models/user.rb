@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
   def to_param
   	name
   end
+
+  def make_admin
+  	self.admin = true
+  	self.save!
+  end
+
 end
