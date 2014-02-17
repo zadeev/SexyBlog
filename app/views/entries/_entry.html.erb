@@ -21,8 +21,11 @@
     <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }  %>
     <% end  %>
 
-
+    <% if Vote.find_by_user_id_and_entry_id(entry.user.id,entry.id).try(:status).nil? %>
     <%=  link_to "-1", minus_rating_entry_path(entry), method: :get %>
     <%= entry.rating %>
     <%= link_to "+1", plus_rating_entry_path(entry), method: :get %>
+    <% else %>
+    <%= entry.rating %>
+    <% end %>
 

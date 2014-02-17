@@ -66,6 +66,14 @@ class EntriesController < ApplicationController
         @entry.plus_rating
    
     @entry.save
+
+    @vote = Vote.new
+    @vote.entry_id = @entry.id
+    @vote.user_id = @entry.user.id
+    @vote.status = true
+    @vote.save!
+
+
     redirect_to :back
   end
 
@@ -73,6 +81,13 @@ class EntriesController < ApplicationController
         @entry.minus_rating
    
     @entry.save
+
+        @vote = Vote.new
+    @vote.entry_id = @entry.id
+    @vote.user_id = @entry.user.id
+    @vote.status = false
+    @vote.save!
+
     redirect_to :back
   end
 
