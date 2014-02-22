@@ -1,3 +1,4 @@
+
     <p>
       <%= entry.user.name %>
     at
@@ -25,10 +26,15 @@
 
     <% if Vote.find_by_user_id_and_entry_id(session[:user_id],entry.id).try(:status).nil? %>
     <%=  link_to "-1", minus_rating_vote_path(entry), method: :get %>
-    <%= Vote.where(:entry_id => entry.id, :status => true).count - Vote.where(:entry_id => entry.id, :status => false).count %>
+
 
     <%= link_to "+1", plus_rating_vote_path(entry), method: :get %>
+    <% elsif Vote.find_by_user_id_and_entry_id(session[:user_id],entry.id).try(:status) %>
+    <%= 'U <3 this post' %>
     <% else %>
-    <%= Vote.where(:entry_id => entry.id, :status => true).count - Vote.where(:entry_id => entry.id, :status => false).count %>
+    <%= ':-(' %>
+
     <% end %>
+
+        <%= Vote.where(:entry_id => entry.id, :status => true).count - Vote.where(:entry_id => entry.id, :status => false).count %>
 

@@ -1,10 +1,11 @@
 class VotesController < ApplicationController
   
+  before_action :auth_to_vote
+
   def plus_rating
 
-  	@entry = Entry.find(params[:id])
     @vote = Vote.new
-    @vote.entry_id = @entry.id
+    @vote.entry_id = params[:id]
     @vote.user_id = session[:user_id]
     @vote.status = true
     @vote.save!
@@ -15,9 +16,9 @@ class VotesController < ApplicationController
 
   def minus_rating
   	
-  	@entry = Entry.find(params[:id])
+  	
     @vote = Vote.new
-    @vote.entry_id = @entry.id
+    @vote.entry_id = params[:id]
     @vote.user_id = session[:user_id]
     @vote.status = false
     @vote.save!
@@ -25,5 +26,14 @@ class VotesController < ApplicationController
 
     redirect_to :back
   end
+
+  def auth_to_vote
+  	unless session[:user_id]
+  		redirect_to :back, notice: 'U should be logged in.'
+  	end
+  end
+
+  def not_first_vote
+  	
 
 end
