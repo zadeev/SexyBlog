@@ -1,6 +1,8 @@
 Sexyblog::Application.routes.draw do
   
 
+  resources :comments
+
 controller :sessions do
 get 'login' => :new
 post 'login' => :create 
@@ -13,12 +15,7 @@ end
   #get "sessions/create"
   get "sessions/destroy"
 
-  resources :entries do
-        member do
-      get "plus_rating"
-      get "minus_rating"
-end
-    end
+  resources :entries 
 
   resources :users do
     member do
@@ -32,6 +29,12 @@ end
     end
   end
 
+  resources :votes do
+        member do
+      get "plus_rating"
+      get "minus_rating"
+end
+    end
 
 
   # get "make_admin/:id", to: "users#make_admin"

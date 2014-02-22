@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :edit, :update, :destroy, :plus_rating, :minus_rating]
+  before_action :set_entry, only: [:show, :edit, :update, :destroy]
   # before_filter :authorize, only: [:create, :new, :update, :edit, :destroy]
 
   # GET /entries
@@ -54,6 +54,7 @@ class EntriesController < ApplicationController
 
   # DELETE /entries/1
   # DELETE /entries/1.json
+  
   def destroy
     @entry.destroy
     respond_to do |format|
@@ -62,34 +63,7 @@ class EntriesController < ApplicationController
     end
   end
 
-  def plus_rating
-        @entry.plus_rating
-   
-    @entry.save
 
-    @vote = Vote.new
-    @vote.entry_id = @entry.id
-    @vote.user_id = @entry.user.id
-    @vote.status = true
-    @vote.save!
-
-
-    redirect_to :back
-  end
-
-  def minus_rating
-        @entry.minus_rating
-   
-    @entry.save
-
-        @vote = Vote.new
-    @vote.entry_id = @entry.id
-    @vote.user_id = @entry.user.id
-    @vote.status = false
-    @vote.save!
-
-    redirect_to :back
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

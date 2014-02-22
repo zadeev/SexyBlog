@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217163757) do
+ActiveRecord::Schema.define(version: 20140222163340) do
+
+  create_table "comments", force: true do |t|
+    t.string   "name"
+    t.text     "comment"
+    t.integer  "user_id"
+    t.integer  "entry_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "entries", force: true do |t|
     t.string   "header"
@@ -19,7 +28,6 @@ ActiveRecord::Schema.define(version: 20140217163757) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rating",     default: 0
   end
 
   add_index "entries", ["user_id"], name: "index_entries_on_user_id"
